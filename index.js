@@ -1,11 +1,13 @@
 const express = require("express");
 
-const { PORT } = require("./config");
+require("dotenv").config();
 
 const app = express();
 
 app.get("/", (req, res) => res.send("Dashboard Test"));
 
-app.listen(PORT, () => {
-  console.log(`Dashboard Test Backend listening on http://localhost:${PORT}`);
+app.listen(process.env.PORT, () => {
+  console.log(
+    `Dashboard Test Backend listening on http://localhost:${process.env.PORT}`
+  );
 });
