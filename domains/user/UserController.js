@@ -13,6 +13,7 @@ In an production/official application, we should go for a database, for various 
 const users = [
   {
     id: 1,
+    name: "Demo User",
     email: "demo@demo.com",
     password: bcryptjs.hashSync("demo", salt)
   }
