@@ -44,7 +44,8 @@ class UserController {
     }
 
     response.status(401).json({
-      message: "An error happened"
+      code: "NO_USER_FOUND_WITH_CREDENTIALS",
+      message: "No user found with your credentials"
     });
   }
 }
