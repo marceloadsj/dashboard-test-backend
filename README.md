@@ -34,6 +34,8 @@ The backend follow a simpler approach, so I can focus to develop a better fronte
 
 - [Express](https://expressjs.com/) - The library that controls the http requests and sends to the right controller. I'm using some middlewares as well, enabling configurations like cors and protected routes.
 
+- [Socket.io](https://socket.io/) - The main library to work with websockets. We can send and receive realtime messages between clients and server. It take care of upgrading from pooling to pure websocket when available.
+
 - WIP...
 
 ##### Support Libraries:
