@@ -30,9 +30,13 @@ The backend follow a simpler approach, so I can focus to develop a better fronte
 
 **It's important to notice that Heroku stops the instance after 30 minutes of inactivity, so we lose all in memory data on that moment, like user registrations.**
 
+**I'm not preventing the same user to login twice, so we can have a scenario where the user receives a login message of the same user**
+
 #### Main Libraries:
 
 - [Express](https://expressjs.com/) - The library that controls the http requests and sends to the right controller. I'm using some middlewares as well, enabling configurations like cors and protected routes.
+
+- [Socket.io](https://socket.io/) - The main library to work with websockets. We can send and receive realtime messages between clients and server. It take care of upgrading from pooling to pure websocket when available.
 
 - WIP...
 
