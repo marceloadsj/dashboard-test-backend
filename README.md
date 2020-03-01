@@ -1,4 +1,4 @@
-# [WIP] Dashboard Test Backend
+# Dashboard Test Backend
 
 This is a testing project, building a dashboard with some specific features.
 That's the backend part, simpler than the frontend and using an in memory approach to store dynamic data.
