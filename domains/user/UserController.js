@@ -82,7 +82,7 @@ class UserController {
     const { name, username, email, password } = request.body;
 
     const user = users.find(user => {
-      return user.username === username || user.email === username;
+      return user.username === username || user.email === email;
     });
 
     if (user) {
