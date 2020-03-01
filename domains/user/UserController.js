@@ -42,7 +42,7 @@ class UserController {
     const loggedUser = users.find(user => user.id === userId);
     if (!loggedUser) return UserController.authMiddlewareError(response);
 
-    request.meta = { ...request.meta, loggedUser };
+    request.meta = { ...request.meta, token, loggedUser };
 
     next();
   }
@@ -75,6 +75,12 @@ class UserController {
       code: "NO_USER_FOUND_WITH_CREDENTIALS",
       message: "No user found with your credentials"
     });
+  }
+
+  logout(request, response) {
+    delete loggedUserTokens[request.meta.token];
+
+    response.send();
   }
 
   me(request, response) {
