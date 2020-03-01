@@ -24,9 +24,10 @@ const loggedUserTokens = {};
 
 class UserController {
   static authMiddlewareError(response) {
-    response
-      .status(401)
-      .json({ message: "You don't have access to that content" });
+    response.status(401).json({
+      code: "NO_AUTH_ACCESS",
+      message: "You don't have access to that content"
+    });
   }
 
   authMiddleware(request, response, next) {
@@ -75,6 +76,30 @@ class UserController {
       code: "NO_USER_FOUND_WITH_CREDENTIALS",
       message: "No user found with your credentials"
     });
+  }
+
+  register(request, response) {
+    const { name, username, email, password } = request.body;
+
+    const user = users.find(user => {
+      return user.username === username || user.email === username;
+    });
+
+    if (user) {
+      response.status(400).json({
+        code: "USER_ALREADY_REGISTERED",
+        message: "An user with that email is already registered"
+      });
+
+      return;
+    }
+
+    const hashedPassword = bcryptjs.hashSync(password, salt);
+    const id = users.length + 1;
+
+    users.push({ id, name, username, email, password: hashedPassword });
+
+    response.send();
   }
 
   logout(request, response) {
