@@ -88,7 +88,7 @@ class UserController {
     if (user) {
       response.status(400).json({
         code: "USER_ALREADY_REGISTERED",
-        message: "An user with that email is already registered"
+        message: "An user with that username or email is already registered"
       });
 
       return;
