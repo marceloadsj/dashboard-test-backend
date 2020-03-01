@@ -14,6 +14,7 @@ const users = [
   {
     id: 1,
     name: "Demo User",
+    username: "demo_user",
     email: "demo@demo.com",
     password: bcryptjs.hashSync("demo", salt)
   }
@@ -23,11 +24,14 @@ const loggedUserTokens = {};
 
 class UserController {
   login(request, response) {
-    const { email, password } = request.body;
+    const { username, password } = request.body;
     const hashedPassword = bcryptjs.hashSync(password, salt);
 
     const user = users.find(user => {
-      return user.email === email && user.password === hashedPassword;
+      return (
+        (user.username === username || user.email === username) &&
+        user.password === hashedPassword
+      );
     });
 
     if (user) {
